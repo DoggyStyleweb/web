@@ -5,6 +5,18 @@
 
 	{% block content %}
 		<div class="hero-unit" align="center" style="margin-top:70px">
-		    <p>Nuevos amigos</p>
+		    <h1>Nuevos amigos</h1>
+		    <img src="{{ url_for('static', filename='perritos.jpg') }}" width=280 heigth=280>
 	    </div>
+	    <ul>
+
+			{% for entry in entries %}
+			<li>
+				<p>{{entries.username}}</p>
+				<p>{{entries.lugar}}</p>
+				<p>hola</p>
+			</li>
+			{% endfor %}
+		</ul>
+
 	{% endblock content %}

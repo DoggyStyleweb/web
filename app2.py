@@ -11,7 +11,7 @@ app=Flask(__name__)
 #conexion con la base de datos
 def connect_db():
 	"""retorna una coexion a DB"""
-	path_to_db='entry.db'
+	path_to_db='proyecto.db'
 	rv=sqlite3.connect(path_to_db)
 	rv.row_factory=sqlite3.Row
 	return rv
@@ -31,7 +31,13 @@ def show_entries():
 
 @app.route('/amigos')
 def inicio():
-	return render_template('welcome.html')
+	db=connect_db()
+	cur=db.execute('SELECT username, lugar FROM usuario')
+	entries=cur.fetchall()
+	db.close()
+	return render_template('welcome.html', entries=entries)
+
+
 
 if __name__=="__main__":
 	app.run(debug=True)
