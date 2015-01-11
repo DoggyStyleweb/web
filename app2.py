@@ -32,12 +32,22 @@ def show_entries():
 @app.route('/amigos')
 def inicio():
 	db=connect_db()
-	cur=db.execute('SELECT username, lugar FROM usuario')
+	cur=db.execute('SELECT * FROM perro')
 	entries=cur.fetchall()
 	db.close()
 	return render_template('welcome.html', entries=entries)
 
+@app.route('/registro/usuario')
+def registro():
+	return render_template('register.html')
 
+@app.route('/registro/mascota')
+def registro2():
+	return render_template('registerPet.html')
+
+@app.route('/registro/success')
+def registro3():
+	return render_template('registerSuccess.html')
 
 if __name__=="__main__":
 	app.run(debug=True)

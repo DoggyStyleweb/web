@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+	{% block head %}
+	{{ super() }}
+	{% endblock head %}
+
+	{% block content %}
+		<div class="hero-unit" align="center" style="margin-top:70px">
+		    <h1>Registro: Paso 1</h1>
+		<p>Complete los siguientes campos personales</p>
+
+		{% if error %}
+		<p class="error"><strong>Error:</strong> {{ error }} </p>
+		{% endif %}
+		<br/>
+		
+		<form style="margin-left: 70px">
+            <div class="input-group">
+            	<span class="input-group-addon">Usuario <span class="glyphicon glyphicon-user"></span></span>
+            	<input type="text" class="form-control" id="user" placeholder="Ingresa nombre de usuario">
+            </div>
+            <br>
+            <div class="input-group">
+                <span class="input-group-addon"  >Contraseña <span class="glyphicon glyphicon-lock"></span></span>
+                <input type="password" class="form-control" id="pass" placeholder="Ingresa contraseña">
+            </div>
+            <br>
+            <div class="input-group">
+                <span class="input-group-addon">Nombre <span class="glyphicon glyphicon-font"></span></span>
+                <input type="text" class="form-control" id="name" placeholder="Ingresa nombre completo">
+            </div>
+            <br>
+            <div class="input-group">
+                <span class="input-group-addon">Mail <span class="glyphicon glyphicon-envelope"></span></span>
+                <input type="text" class="form-control" id="mail" placeholder="Ingresa mail">
+            </div>
+            <br>
+            <div class="input-group">
+                <span class="input-group-addon">Telefono <span class="glyphicon glyphicon-phone-alt"></span></span>
+                <input type="text" class="form-control" id="telefone" placeholder="Ingresa telefono">
+            </div>
+            <br>
+            <div class="input-group">
+                <span class="input-group-addon">Ciudad <span class="glyphicon glyphicon-map-marker"></span></span>
+                <input type="text" class="form-control" id="city" placeholder="Ingresa ciudad actual">
+            </div>
+            <br>
+            <div class="input-group">
+                <span class="input-group-addon">Lugar <span class="glyphicon glyphicon-tree-conifer"></span></span> 
+                <input type="text" class="form-control" id="place" placeholder="Ingresa lugar de encuentro (Ej: Parque Bicentenario)">
+            </div>
+            <br>
+            <a type='button' class='btn btn-success' href="http://localhost:5000/registro/mascota">Siguiente <span class='glyphicon glyphicon-arrow-right'></span></a>
+            <a type='button' class='btn btn-danger' href="http://localhost:5000/">Cancelar <span class='glyphicon glyphicon-remove'></span></a>
+        </form>   
+        <!--<script src="js/bootstrap.min.js"></script>-->
+
+		{% for message in get_flashed_messages() %}
+		<div class=flash>
+			{{ message }}
+		</div>
+		{% endfor %}
+	    </div>
+	{% endblock content %}

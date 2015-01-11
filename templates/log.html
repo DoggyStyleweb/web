@@ -5,9 +5,9 @@
 
 {% block content %}
 	<div align="center" style="margin-top:70px">
-		<h1>Iniciar Sesion</h1>
+		<br><br>
 		<img src="{{ url_for('static', filename='perritos.jpg') }}" width=280 heigth=280>
-
+		<br><br><br>
 		{% if error %}
 		<p class="error"><strong>Error:</strong> {{ error }} </p>
 		{% endif %}
@@ -15,18 +15,20 @@
 		
 		<form action="" method="post" style="width: 400px;">
 			<div class="input-group">
-				<span class="input-group-addon">@</span>
-				<input type="text" class="form-control" placeholder="Usuario" name="username" value"{{ request.form.username }}"> 
+				<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+				<input type="text" class="form-control" placeholder="Ingresa usuario" name="username" value"{{ request.form.username }}"> 
 			</div>
 			<br/>
 			<div class="input-group">
-				<span class="input-group-addon"> * </span>
-				<input type="password" class="form-control" placeholder="Contraseña" name="password" value"{{ request.form.password }}"> 
+				<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+				<input type="password" class="form-control" placeholder="Ingresa contraseña" name="password" value"{{ request.form.password }}"> 
 				
 			</div>
 			<br/><br/>
 
 			<input class="btn btn-default" type="submit" value="Login">
+			<br></br>
+			<a href="http://localhost:5000/registro/usuario"> Registrate ahora </a>
 		</form>
 
 		{% for message in get_flashed_messages() %}

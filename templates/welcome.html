@@ -8,15 +8,14 @@
 		    <h1>Nuevos amigos</h1>
 		    <img src="{{ url_for('static', filename='perritos.jpg') }}" width=280 heigth=280>
 	    </div>
-	    <ul>
-
-			{% for entry in entries %}
-			<li>
-				<p>{{entries.username}}</p>
-				<p>{{entries.lugar}}</p>
-				<p>hola</p>
-			</li>
+			{% for entries in entries %}
+			
+			<div style="display:inline-block; margin: 40px 30px 20px 10px; background-color:#E61727; border: 3px solid #A21A28;">
+				<h3 >{{entries.nombre}}</h3>
+				<p>Raza: {{entries.raza}}</p>
+				<p>Edad: {{entries.edad}}</p>
+				<p>Sexo: {{entries.sexo}}</p>
+			</div>
 			{% endfor %}
-		</ul>
 
 	{% endblock content %}
