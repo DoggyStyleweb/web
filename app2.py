@@ -25,9 +25,22 @@ def init_db():
 	db.close()
 
 #rutas
-@app.route('/')
+@app.route('/', methods=['GET','POST'])
 def show_entries():
-	return render_template('log.html')
+	if request.method=='GET':
+		return render_template('log.html')
+	elif request.method=='POST':
+		usuario=request.form['username']
+		pas=request.form['password']
+		db=connect_db()
+		cur=db.execute('SELECT username,password from usuario where username =? and password=?',[usuario,pas])
+		entries=cur.fetchall()
+		c=len(entries)
+		if c>0:
+			return inicio()
+	else:
+		return render_template('log.html')
+
 
 @app.route('/amigos')
 def inicio():
