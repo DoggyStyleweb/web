@@ -7,7 +7,8 @@ from werkzeug import secure_filename #####
 from flask import (
 	Flask, 
 	render_template, 
-	request
+	request,
+	url_for
 	)
 
 app=Flask(__name__)
@@ -91,13 +92,30 @@ def registro():
 		db.execute('INSERT INTO usuario (username, password, nombre, telefono, mail, ciudad, lugar) VALUES (?,?,?,?,?,?,?)',[username, password, nombre, telefono, mail, ciudad, lugar])
 		db.commit()
 		db.close()
-		return render_template('registerPet.html')
+		return redirect(url_for('registro2'))
 	else:
 		return "Acceso denegado"
 
-@app.route('/registro/mascota')
+@app.route('/registro/mascota', methods=['GET','POST'])
 def registro2():
-	return render_template('registerPet.html')
+	
+	if request.method=='GET':
+		return render_template('registerPet.html')
+	elif request.method=='POST':
+		id_usuario=11
+		nombre=request.form['nombre']
+		raza=request.form['raza']
+		edad=request.form['edad']
+		sexo=request.form['sexo']
+		foto="mifoto.jpg"
+		db=connect_db()
+		db.execute('INSERT INTO perro (id_usuario, nombre, raza, edad, sexo, foto) VALUES (?,?,?,?,?,?)',[id_usuario, nombre, raza, edad, sexo, foto])
+		db.commit()
+		db.close()
+		return render_template('registerSuccess.html')
+	else:
+		return "Acceso denegado"
+
 
 @app.route('/registro/success')
 def registro3():

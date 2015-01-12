@@ -13,55 +13,37 @@
 		{% endif %}
 		<br/>
 		
-		<form style="margin-left: 70px">
+		<form style="margin-left: 70px" action="" method="POST">
             <div class="input-group">
                 <span class="input-group-addon">Nombre <span class="glyphicon glyphicon-pencil"></span></span>
-                <input type="text" class="form-control" id="name" placeholder="Ingresa nombre de tu mascota">
+                <input type="text" class="form-control" name="nombre" placeholder="Ingresa nombre de tu mascota">
             </div>
             <br>
             <div class="input-group">
                 <span class="input-group-addon">Raza <span class="glyphicon glyphicon-tag"></span></span>
-                <input type="text" class="form-control" id="mail" placeholder="Ingresa raza de tu mascota">
+                <input type="text" class="form-control" name="raza" placeholder="Ingresa raza de tu mascota">
             </div>
             <br>
             <div class="input-group">
                 <span class="input-group-addon">Edad <span class="glyphicon glyphicon-gift"></span></span>
-                <select class="form-control">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                  <option>6</option>
-                  <option>7</option>
-                  <option>8</option>
-                  <option>9</option>
-                  <option>10</option>
-                  <option>11</option>
-                  <option>12</option>
-                  <option>13</option>
-                  <option>14</option>
-                </select>
+                <input type="text" class="form-control" name="edad" placeholder="Ingresa edad de tu mascota">
             </div>
             <br>
             <div class="input-group">
                 <span class="input-group-addon">Sexo <span class="glyphicon glyphicon-fire"></span></span>
-                <select class="form-control">
-                  <option>Macho</option>
-                  <option>Hembra</option>
-                </select>
+                <input type="text" class="form-control" name="sexo" placeholder="Ingresa sexo">
             </div>
             <br>
             <div class="input-group">
                 <span class="input-group-addon">Foto <span class="glyphicon glyphicon-picture"></span></span> 
-                <input type="text" class="form-control" id="file" placeholder="Sube tu foto aqui" readonly></input>
+                <input type="text" class="form-control" name="foto" placeholder="Sube tu foto aqui" readonly></input>
                 <!-- Future Work -->
-                <span class="input-group-addon" onclick="$('#pdffile').click();">Adjuntar</span>
+                
 
             </div>
             <br>
             <a type='button' class='btn btn-warning' href="http://localhost:5000/registro/usuario">Atras <span class='glyphicon glyphicon-arrow-left'></span></a>
-            <a type='button' class='btn btn-success' href="http://localhost:5000/registro/success">Siguiente <span class='glyphicon glyphicon-arrow-right'></span></a>
+            <input type='submit' class='btn btn-success' href="http://localhost:5000/registro/success" value="Siguiente"></input>
             <a type='button' class='btn btn-danger' href="http://localhost:5000/">Cancelar <span class='glyphicon glyphicon-remove'></span></a>
         </form>   
 
