@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+	{% block head %}
+	{{ super() }}
+	{% endblock head %}
+
+	{% block content %}
+		<div class="hero-unit" align="center" style="margin-top:70px">
+			<img src="{{ url_for('static', filename='perritos.jpg') }}" width=280 heigth=280>
+		    <h1>¡Elije a tus potenciales parejas!</h1>
+		    <h3> Listados de perritos<h3>
+		    	
+		  	{% for entries in entries %}
+			
+			<li>
+				<p>Nombre de la mascota: {{entries.nombre}}</p>
+				<p>Usuario: {{entries.username}}</p>
+				<p>Telefono del usuario: {{entries.telefono}}</p>
+			</li>
+			<br><br>
+			{% endfor %}
+			
+
+
+		    <br>
+		  	<p></p>
+		  	
+
+	    </div>
+
+
+
+	{% endblock content %}

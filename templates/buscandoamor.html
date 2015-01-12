@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+	{% block head %}
+	{{ super() }}
+	{% endblock head %}
+
+	{% block content %}
+		<div class="hero-unit" align="center" style="margin-top:70px">
+			
+		    <h1>¡Buscando el amor!</h1>
+		    <!--<img src="{{ url_for('static', filename='perritos.jpg') }}" width=280 heigth=280> -->
+		    <h4> Ingresa los datos correspondientes a la pareja que andas buscando <h4>
+		    <br>
+		  	<p></p>
+		  	<form action="{{ url_for('filtro')}}" method="post" style="width: 200px;">
+				<div class="input-group">
+					<span class="input-group-addon"><span class="glyphicon glyphicon-fire"></span> </span>
+					<input type="text" class="form-control" placeholder="Sexo" name="sexo" value="{{ request.form.sexo }}"> 
+				</div>
+				<br/>
+				<div class="input-group">
+					<span class="input-group-addon"><span class="glyphicon glyphicon-tag"></span> </span>
+					<input type="text" class="form-control" placeholder="Raza" name="raza" value="{{ request.form.raza }}"> 
+				</div>
+				<br/>
+				<div class="input-group">
+					<span class="input-group-addon"> <span class="glyphicon glyphicon-map-marker"></span></span>
+					<input type="text" class="form-control" placeholder="Ciudad" name="ciudad" value="{{ request.form.ciudad }}"> 
+					
+				</div>
+				<br/><br/>
+
+				<input class="btn btn-default" type="submit" value="¡Buscar!" >
+			</form>
+
+	    </div>
+	    
+
+	{% endblock content %}

@@ -1,5 +1,9 @@
 # -*- coding:utf-8 -*-
 from sqlite3 import dbapi2 as sqlite3
+from flask import * #####
+from flask import make_response ##INCLUI ESTO
+from flask import redirect####
+from werkzeug import secure_filename #####
 from flask import (
 	Flask, 
 	render_template, 
@@ -49,6 +53,27 @@ def inicio():
 	entries=cur.fetchall()
 	db.close()
 	return render_template('welcome.html', entries=entries)
+
+
+@app.route('/buscandoamor')
+def buscandoamor():
+	db=connect_db()
+	cur=db.execute('SELECT username, lugar FROM usuario where  lugar="saval" ')
+	entries=cur.fetchall()
+	db.close()
+	return render_template('buscandoamor.html', entries=entries)
+
+@app.route('/filtro', methods=['POST'])
+def filtro(): 
+	sexo = request.form['sexo']
+	raza = request.form['raza']
+	ciudad = request.form['ciudad']
+	db = connect_db()
+	cur=db.execute('select perro.nombre, usuario.username, usuario.nombre, usuario.telefono from perro,usuario where perro.id_usuario=usuario.id_usuario and sexo=? and raza=? and ciudad= ?', 
+	                            [sexo,raza,ciudad])
+	entries=cur.fetchall()
+	db.commit()
+	return render_template('filtro.html', entries=entries)
 
 @app.route('/registro/usuario', methods=['GET','POST'])
 def registro():
