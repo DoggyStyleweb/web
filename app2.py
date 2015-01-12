@@ -50,9 +50,25 @@ def inicio():
 	db.close()
 	return render_template('welcome.html', entries=entries)
 
-@app.route('/registro/usuario')
+@app.route('/registro/usuario', methods=['GET','POST'])
 def registro():
-	return render_template('register.html')
+	if request.method=='GET':
+		return render_template('register.html')
+	elif request.method=='POST':
+		username=request.form['user']
+		password=request.form['pass']
+		nombre=request.form['nombre']
+		telefono=request.form['telefono']
+		mail=request.form['mail']
+		ciudad=request.form['ciudad']
+		lugar=request.form['lugar']
+		db=connect_db()
+		db.execute('INSERT INTO usuario (username, password, nombre, telefono, mail, ciudad, lugar) VALUES (?,?,?,?,?,?,?)',[username, password, nombre, telefono, mail, ciudad, lugar])
+		db.commit()
+		db.close()
+		return render_template('registerPet.html')
+	else:
+		return "Acceso denegado"
 
 @app.route('/registro/mascota')
 def registro2():
